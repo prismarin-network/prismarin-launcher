@@ -1,6 +1,7 @@
 # IDEs
 .idea
 .vscode
+.DS_Store
 
 # local env files
 .env.local
