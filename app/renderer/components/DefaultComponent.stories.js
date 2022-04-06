@@ -1,7 +1,7 @@
 import React from 'react';
 import DefaultComponent from "./DefaultComponent";
 
-export default {
+const Component = {
   title: 'DefaultComponent',
   component: DefaultComponent,
   parameters: {
@@ -15,3 +15,5 @@ export const Default = Template.bind({});
 Default.args = {
   name: "Test User",
 };
+
+export default Component
