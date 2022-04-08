@@ -6,7 +6,7 @@ interface DefaultLayoutProps {
 
 const DefaultLayout = ({children}: DefaultLayoutProps) => {
     return (
-        <div>
+        <div className="p-10">
             {children}
         </div>
     )
