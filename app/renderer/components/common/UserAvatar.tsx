@@ -1,4 +1,5 @@
-import {FaUserAlt} from "react-icons/fa"
+import Image from "next/image"
+import DEFAULT_PROFILE_PICTURE from "../../public/images/default_avatar.png"
 
 type ActivityStatus = "ONLINE" | "OFFLINE" | "IDLE"
 
@@ -14,10 +15,14 @@ const getActivityColor = (activityStatus: ActivityStatus) => {
     }
 }
 
-const UserAvatar = ({ activityStatus, size = "1rem" }: {activityStatus: ActivityStatus, size?: string}) => {
+const UserAvatar = ({ activityStatus, size = "50px" }: {activityStatus: ActivityStatus, size?: string}) => {
     return (
-        <div className="flex relative justify-center items-center p-3.5 w-min bg-gray-600 rounded-lg">
-            <FaUserAlt className="-mt-0.5 text-white" size={size} />
+        <div className="relative" style={{width: size, height: size}}>
+            <Image
+                src={DEFAULT_PROFILE_PICTURE} width={size} height={size}
+                alt="Default Profile Pictures"
+                className="rounded"
+            />
             <div className={`absolute -right-[4px] -bottom-[4px] w-4 h-4 rounded-full ${getActivityColor(activityStatus)}`} />
         </div>
     )
