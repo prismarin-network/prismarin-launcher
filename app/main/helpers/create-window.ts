@@ -10,8 +10,8 @@ export default (windowName: string, options: BrowserWindowConstructorOptions): B
   const name = `window-state-${windowName}`;
   const store = new Store({ name });
   const defaultSize = {
-    width: options.width,
-    height: options.height,
+    width: 1280,
+    height: 720,
   };
   let state = {};
   let win;
@@ -24,8 +24,8 @@ export default (windowName: string, options: BrowserWindowConstructorOptions): B
     return {
       x: position[0],
       y: position[1],
-      width: size[0],
-      height: size[1],
+      width: 1600,
+      height: 900,
     };
   };
 
@@ -70,6 +70,8 @@ export default (windowName: string, options: BrowserWindowConstructorOptions): B
   const browserOptions: BrowserWindowConstructorOptions = {
     ...options,
     ...state,
+    frame: false,
+    resizable: false,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,

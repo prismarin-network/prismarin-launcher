@@ -5,7 +5,7 @@ const IndexPage = observer(() => {
 
     return (
         <DefaultLayout>
-            No content.
+            
         </DefaultLayout>
     )
 })

@@ -1,4 +1,6 @@
 /* Global CSS files for all styles */
+@import 'fonts.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,4 +8,9 @@
 .react-icons {
   vertical-align: middle;
   color: white;
+}
+
+.titleBar {
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
 }

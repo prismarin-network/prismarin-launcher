@@ -23,7 +23,7 @@ const UserAvatar = ({ activityStatus, size = "50px" }: {activityStatus: Activity
                 alt="Default Profile Pictures"
                 className="rounded"
             />
-            <div className={`absolute -right-[4px] -bottom-[4px] w-4 h-4 rounded-full ${getActivityColor(activityStatus)}`} />
+            <div className={`absolute -right-[4px] -bottom-[4px] w-3 h-3 rounded-full ${getActivityColor(activityStatus)}`} />
         </div>
     )
 }

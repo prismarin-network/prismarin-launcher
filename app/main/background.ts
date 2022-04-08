@@ -1,4 +1,4 @@
-import { app } from 'electron';
+import { app, ipcMain } from 'electron';
 import serve from 'electron-serve';
 import { createWindow } from './helpers';
 
@@ -23,8 +23,17 @@ if (isProd) {
   } else {
     const port = process.argv[2];
     await mainWindow.loadURL(`http://localhost:${port}/`);
-    // mainWindow.webContents.openDevTools();
   }
+
+  // Minimize Window
+  ipcMain.on('minimize', () => {
+    mainWindow.minimize()
+  })
+
+  // Close Window
+  ipcMain.on('close', () => {
+    mainWindow.close()
+  })
 })();
 
 app.on('window-all-closed', () => {
