@@ -7,7 +7,7 @@ interface TitleBarButtonProps {
 
 const TitleBarButton = ({children, onClick}: TitleBarButtonProps) => {
     return (
-        <button className="p-1.5 rounded-lg cursor-default bg-midnight-300 hover:bg-midnight-200" onClick={onClick}>
+        <button className="p-1.5 rounded-lg cursor-pointer bg-midnight-300 hover:bg-midnight-200" onClick={onClick}>
             {children}
         </button>
     )

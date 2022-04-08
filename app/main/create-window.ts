@@ -10,10 +10,11 @@ export default (windowName: string, options: BrowserWindowConstructorOptions): B
   const name = `window-state-${windowName}`;
   const store = new Store({ name });
   const defaultSize = {
-    width: 1280,
-    height: 720,
+    width: 1600,
+    height: 900,
   };
   let state = {};
+  // eslint-disable-next-line prefer-const
   let win;
 
   const restore = () => store.get(key, defaultSize);
@@ -70,6 +71,7 @@ export default (windowName: string, options: BrowserWindowConstructorOptions): B
   const browserOptions: BrowserWindowConstructorOptions = {
     ...options,
     ...state,
+    title: "Prismarin",
     frame: false,
     resizable: false,
     webPreferences: {
