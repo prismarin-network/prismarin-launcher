@@ -11,7 +11,7 @@ const AuthLayout = ({children}: DefaultLayoutProps) => {
             <div className="w-[500px]">
                 {children}
             </div>
-            <div className="flex-grow h-full bg-center bg-cover" style={{backgroundImage: "url('/images/frostbite.jpeg')"}}>
+            <div className="flex-grow h-full bg-center bg-cover" style={{backgroundImage: "url('/images/environment.jpeg')"}}>
                 <TitleBarButtons />
             </div>
         </div>
