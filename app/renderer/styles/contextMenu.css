@@ -1,0 +1,90 @@
+:root {
+    --background-color: #1E1F33;
+    --text-color: #9B9DBB;
+    --border-color: #333456;
+
+    --background-hover-color: #333456;
+    --text-hover-color: #B3B5CC;
+
+    --background-disabled: transparent;
+    --text-disabled: #6B6D9A;
+
+    --divider-color: rgba(192, 193, 212, 0.1);
+}
+
+.react-contextmenu {
+    background-color: var(--background-color);
+    background-clip: padding-box;
+    border: solid 2px var(--border-color);
+    border-radius: .25rem;
+    color: var(--text-color);
+    font-size: 16px;
+    margin: 2px 0 0;
+    min-width: 160px;
+    outline: none;
+    opacity: 0;
+    padding: 8px 0;
+    pointer-events: none;
+    text-align: left;
+}
+
+.react-contextmenu.react-contextmenu--visible {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 9999;
+}
+
+.react-contextmenu-item {
+    background: 0 0;
+    border: 0;
+    color: var(--text-color);
+    cursor: pointer;
+    line-height: 1.5;
+    padding: 3px 10px;
+    text-align: inherit;
+    white-space: nowrap;
+}
+
+.react-contextmenu-item.react-contextmenu-item--active,
+.react-contextmenu-item.react-contextmenu-item--selected {
+    color: var(--text-hover-color);
+    background-color: var(--background-hover-color);
+    text-decoration: none;
+}
+
+.react-contextmenu-item.react-contextmenu-item--disabled,
+.react-contextmenu-item.react-contextmenu-item--disabled:hover {
+    background-color: var(--background-disabled);
+    color: var(--text-disabled);
+    cursor: not-allowed;
+}
+
+.react-contextmenu-item--divider {
+    border-bottom: 1px solid var(--divider-color);
+    cursor: inherit;
+    margin-bottom: 3px;
+    padding: 2px 0;
+}
+.react-contextmenu-item--divider:hover {
+    background-color: transparent;
+    border-color: var(--divider-color);
+}
+
+.react-contextmenu-item.react-contextmenu-submenu {
+    padding: 0;
+}
+
+.react-contextmenu-item.react-contextmenu-submenu > .react-contextmenu-item {
+}
+
+.react-contextmenu-item.react-contextmenu-submenu > .react-contextmenu-item:after {
+    content: "▶";
+    display: inline-block;
+    position: absolute;
+    right: 7px;
+}
+
+.example-multiple-targets::after {
+    content: attr(data-count);
+    display: block;
+}

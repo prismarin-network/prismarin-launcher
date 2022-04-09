@@ -1,5 +1,6 @@
 /* Global CSS files for all styles */
 @import 'fonts.css';
+@import 'contextMenu.css';
 
 @tailwind base;
 @tailwind components;
