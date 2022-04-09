@@ -15,7 +15,7 @@ const FriendsUser = ({username, activity }: FriendsUserProps) => {
             <ContextMenuTrigger id={`contextMenu-${username}`}>
                 <div className="group relative">
                     <div className="flex items-center py-2 px-4 space-x-3 group-hover:bg-black cursor-pointer">
-                        <UserAvatar activityStatus={activity.activityStatus} size="45px"/>
+                        <UserAvatar activityStatus={activity.activityStatus} size="48px"/>
                         <div className="leading-none">
                             <h3 className="text-lg text-gray-300">
                                 {username}

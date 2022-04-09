@@ -1,9 +1,10 @@
 import React from "react";
-import FriendsList from "../components/panels/friends/FriendsList";
+import FriendsList from "../components/panels/social/FriendsList";
 import TitleBarButtons from "../components/layout/TitleBarButtons";
 import {MdOutlineFileDownload, MdOutlinePersonOutline} from "react-icons/md"
 import Logo from "../components/common/Logo";
 import NavigationBarLink from "../components/layout/navigation/NavigationBarLink";
+import UserSelfProfile from "../components/panels/social/UserSelfProfile";
 
 interface DefaultLayoutProps {
     children: React.ReactNode
@@ -42,7 +43,9 @@ const DefaultLayout = ({children}: DefaultLayoutProps) => {
                         <FriendsList />
                     </div>
                 </div>
-                <div className="w-full h-24 bg-midnight-400"/>
+                <div className="w-full h-24 bg-midnight-400">
+                    <UserSelfProfile username="tsuukii" />
+                </div>
             </div>
         </div>
     )

@@ -6,7 +6,7 @@ const IndexPage = observer(() => {
 
     return (
         <DefaultLayout>
-            <BackgroundImageWithGradientBottom classes="h-[700px]" imageSRC="/images/dungeon.jpeg">
+            <BackgroundImageWithGradientBottom classes="h-[625px]" imageSRC="/images/dungeon.jpeg">
                 <div className="flex flex-col justify-end px-10 space-y-4 h-full pb-[100px]">
                     <div>
                         <h1 className="text-5xl">
