@@ -21,6 +21,7 @@ steps:
 
   - name: install
     image: node:16.9.1
+    depends_on: [ restore-cache ]
     commands:
       - cd app
       - yarn install
