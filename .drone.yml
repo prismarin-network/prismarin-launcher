@@ -41,6 +41,7 @@ steps:
 
   - name: rebuild-cache
     image: drillster/drone-volume-cache
+    depends_on: [install]
     settings:
       rebuild: true
       mount:
