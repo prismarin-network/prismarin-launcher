@@ -22,7 +22,7 @@ const UserSelfProfile = ({username}: UserSelfProfile) => {
                         </h4>
                     </div>
                 </div>
-                <Link href="/auth/login">
+                <Link href="/auth/login" passHref={true}>
                     <button className="btn btn-square">
                         <MdOutlineLogout size="1.5rem" />
                     </button>
