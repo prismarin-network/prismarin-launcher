@@ -52,9 +52,9 @@ steps:
         path: /cache
 
 volumes:
-  - name: cache
+  - name: prismarin-launcher-cache
     host:
-      path: /tmp/drone/cache
+      path: /tmp/drone/cache/prismarin-launcher
 
 ---
 kind: pipeline
