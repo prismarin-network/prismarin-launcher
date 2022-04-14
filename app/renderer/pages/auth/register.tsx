@@ -102,6 +102,7 @@ const Register = () => {
                 isOpen={openConfirmModal}
                 email={email}
                 verifyCode={verifyCode}
+                resendMail={() => createEmailVerificationCode(email).catch(error => console.error(error))}
             />
         </div>
     )
