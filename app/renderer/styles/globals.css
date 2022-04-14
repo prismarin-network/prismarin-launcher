@@ -1,9 +1,37 @@
 /* Global CSS files for all styles */
+@import 'fonts.css';
+@import 'contextMenu.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Normalize React Icons */
 .react-icons {
   vertical-align: middle;
   color: white;
+}
+
+/* Custom TitleBar for dragging */
+.titleBar {
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: #2C2D40;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  width: 0;
 }

@@ -1,5 +1,5 @@
-appId: com.example.electron
-productName: electron-nextjs-ts-scaffold
+appId: in.prismar.launcher
+productName: "Prismarin Launcher"
 copyright: Copyright © 2022
 directories:
   output: dist
@@ -10,3 +10,11 @@ files:
       - package.json
       - app
 publish: null
+
+# Mac configuration
+mac:
+  icon: "resources/icon.icns"
+
+# Windows configuration
+win:
+  icon: "resources/icon.ico"
