@@ -1,6 +1,7 @@
 /* Global CSS files for all styles */
 @import 'fonts.css';
-@import 'contextMenu.css';
+@import 'themes/contextMenu.css';
+@import 'themes/toast.css';
 
 @tailwind base;
 @tailwind components;

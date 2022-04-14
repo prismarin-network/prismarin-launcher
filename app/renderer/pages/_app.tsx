@@ -2,6 +2,9 @@ import React from 'react';
 import type {AppProps} from 'next/app';
 
 import '../styles/globals.css';
+import '@splidejs/react-splide/css';
+
+import ToastWrapper from "../components/ToastWrapper";
 
 function MyApp({Component, pageProps}: AppProps) {
     return (
@@ -10,6 +13,7 @@ function MyApp({Component, pageProps}: AppProps) {
                 <Component {...pageProps} />
                 <div className="absolute top-0 left-0 w-full h-14 pointer-events-none titleBar"/>
             </div>
+            <ToastWrapper />
         </React.Fragment>
     )
 }

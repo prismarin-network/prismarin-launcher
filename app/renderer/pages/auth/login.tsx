@@ -18,7 +18,7 @@ const Login = () => {
                     </div>
                 </a>
                 <form className="flex flex-col mt-16 space-y-3 w-[300px]">
-                    <input type="text" placeholder="Username" className="w-full input"/>
+                    <input type="text" placeholder="Email" className="w-full input"/>
                     <input type="password" placeholder="Password" className="w-full input"/>
                     <Link href="/" passHref={true}>
                         <button className="btn">Login</button>
@@ -27,7 +27,11 @@ const Login = () => {
                         <p className="text-gray-400">
                             Do not have an account yet?
                         </p>
-                        <a className="text-blue-400" href="#">Create one now</a>
+                        <Link href={"/auth/register"} passHref={true}>
+                            <a className="text-blue-400">
+                                Create one now
+                            </a>
+                        </Link>
                     </div>
                 </form>
 

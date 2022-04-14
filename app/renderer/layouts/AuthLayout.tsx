@@ -8,7 +8,7 @@ interface DefaultLayoutProps {
 const AuthLayout = ({children}: DefaultLayoutProps) => {
     return (
         <div className="flex h-screen">
-            <div className="w-[500px]">
+            <div className="flex-shrink-0 w-[500px]">
                 {children}
             </div>
             <div className="flex-grow h-full bg-center bg-cover" style={{backgroundImage: "url('/images/environment.jpeg')"}}>
