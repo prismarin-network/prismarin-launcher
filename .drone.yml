@@ -1,5 +1,5 @@
 kind: pipeline
-name: lint-typecheck
+name: default
 type: docker
 
 trigger:
@@ -9,8 +9,19 @@ trigger:
     - master
 
 steps:
+  - name: restore-cache
+    image: drillster/drone-volume-cache
+    settings:
+      restore: true
+      mount:
+        - ./app/node_modules
+    volumes:
+      - name: cache
+        path: /cache
+
   - name: install
     image: node:16.9.1
+    depends_on: [ restore-cache ]
     commands:
       - cd app
       - yarn install
@@ -28,6 +39,22 @@ steps:
     commands:
       - cd app
       - yarn type-check
+
+  - name: rebuild-cache
+    image: drillster/drone-volume-cache
+    depends_on: [install]
+    settings:
+      rebuild: true
+      mount:
+        - ./app/node_modules
+    volumes:
+      - name: cache
+        path: /cache
+
+volumes:
+  - name: cache
+    host:
+      path: /tmp/drone/cache/prismarin-launcher
 
 ---
 kind: pipeline
