@@ -4,6 +4,7 @@ const FriendsList = () => {
     return (
         <div className="flex flex-col">
             <FriendsUser username="ReaperMaga" activity={{activityStatus: "ONLINE", tagLine: "Playing: FrostBite"}} />
+            <FriendsUser username="HOPE" activity={{activityStatus: "ONLINE", tagLine: "Playing: FreeLife"}} />
             <FriendsUser username="Savje" activity={{activityStatus: "ONLINE", tagLine: "Playing: Inverted Souls"}} />
             <FriendsUser username="leVenour" activity={{activityStatus: "IDLE", tagLine: "Idle"}} />
             <FriendsUser username="Nyx" activity={{activityStatus: "OFFLINE", tagLine: "Last seen 5d ago"}} />
