@@ -1,8 +1,9 @@
 import Modal from "../../common/Modal";
-import PinCode from "../../common/inputs/PinCode";
 import {useEffect, useState} from "react";
 import {useCountdown} from "../../../hooks/useCountdown";
 import {toast} from "react-toastify";
+import VerificationInput from "react-verification-input";
+import styles from "../../../styles/module/pincode.module.css"
 
 interface ConfirmEmailModalProps {
     isOpen: boolean,
@@ -29,11 +30,13 @@ const ConfirmEmailModal = ({isOpen, email, verifyCode, resendMail}: ConfirmEmail
         }
     }, [countDown, resetCountDown])
 
-    const verifyPin = (value: string) => {
-        setLoading(true)
-        verifyCode(value).then(() => {
-            setLoading(false)
-        })
+    const updatePinAndCheckForComplete = (value: string) => {
+        if (value.length === 4) {
+            setLoading(true)
+            verifyCode(value).then(() => {
+                setLoading(false)
+            })
+        }
     }
 
     const resendPin = () => {
@@ -55,10 +58,21 @@ const ConfirmEmailModal = ({isOpen, email, verifyCode, resendMail}: ConfirmEmail
                         We sent an email containing a confirmation code to <b>{email}</b>. The email may be in the spam folder.
                     </h2>
                 </div>
-                <div className="mb-7">
-                    <PinCode
-                        disabled={loading}
-                        onComplete={verifyPin}
+                <div className="mx-12 mb-7">
+                    <VerificationInput
+                        onChange={updatePinAndCheckForComplete}
+                        autoFocus={true}
+                        length={4}
+                        removeDefaultStyles
+                        inputProps={{
+                            disabled: loading
+                        }}
+                        classNames={{
+                            container: styles.container,
+                            character: `${styles.character} input`,
+                            characterInactive: styles.characterInactive,
+                            characterSelected: styles.characterSelected,
+                        }}
                     />
                 </div>
                 <button className="btn btn-sm" disabled={!!countDown} onClick={resendPin}>

@@ -24,8 +24,8 @@ const Register = () => {
             return;
         }
         setOpenConfirmModal(true)
-        createEmailVerificationCode(email).catch(() => {
-            setOpenConfirmModal(false)
+        createEmailVerificationCode(email).catch((error) => {
+            console.error(error)
         })
     }
 
