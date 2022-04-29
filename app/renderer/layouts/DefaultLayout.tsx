@@ -7,6 +7,7 @@ import NavigationBarLink from "../components/layout/navigation/NavigationBarLink
 import UserSelfProfile from "../components/panels/social/UserSelfProfile";
 import {observer} from "mobx-react-lite";
 import authStore from "../store/auth";
+import Link from "next/link"
 
 interface DefaultLayoutProps {
     fullHeight?: boolean
@@ -31,7 +32,7 @@ const DefaultLayout = observer(({fullHeight = true, children}: DefaultLayoutProp
                     </div>
                     <div id="RightNavigation" className="flex items-center space-x-4">
                         <MdOutlinePersonOutline size="1.68em" className="text-gray-500 hover:text-gray-200 cursor-pointer"/>
-                        <Link href={"/downloads"} passHref={false}>
+                        <Link href={"/downloads"} passHref={true}>
                             <MdOutlineFileDownload size="1.75rem" className="text-gray-500 hover:text-gray-200 cursor-pointer"/>
                         </Link>
                     </div>
@@ -49,7 +50,7 @@ const DefaultLayout = observer(({fullHeight = true, children}: DefaultLayoutProp
                         <FriendsList />
                     </div>
                 </div>
-                <div className="w-full h-24 bg-midnight-400/50">
+                <div className="w-full h-24 bg-midnight-400">
                     <UserSelfProfile username={authStore.user.name} />
                 </div>
             </div>
