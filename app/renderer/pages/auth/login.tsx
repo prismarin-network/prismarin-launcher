@@ -1,8 +1,31 @@
 import AuthLayout from "../../layouts/AuthLayout";
 import Link from "next/link";
 import Logo from "../../components/common/Logo";
+import {FormEvent, useState} from "react";
+import {toast} from "react-toastify";
+import authStore from "../../store/auth";
+import {useRouter} from "next/router";
 
-const Login = () => {
+const LoginPage = () => {
+    const router = useRouter()
+    const [username, setUsername] = useState(undefined)
+    const [password, setPassword] = useState(undefined)
+
+    const authenticate = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+        if (!username || !password) {
+            toast.warn("Please enter your username and password to continue")
+            return;
+        }
+        try {
+            await authStore.authenticateWithLoginDetails(username, password)
+            await router.push('/')
+        }
+        catch {
+            toast.warn("The username or password are incorrect.")
+        }
+    }
+
     return (
         <AuthLayout>
             <div className="flex relative flex-col items-center h-full pt-[200px]">
@@ -17,17 +40,31 @@ const Login = () => {
                         </h3>
                     </div>
                 </a>
-                <form className="flex flex-col mt-16 space-y-3 w-[300px]">
-                    <input type="text" placeholder="Username" className="w-full input"/>
-                    <input type="password" placeholder="Password" className="w-full input"/>
-                    <Link href="/" passHref={true}>
-                        <button className="btn">Login</button>
-                    </Link>
+                <form className="flex flex-col mt-16 space-y-3 w-[300px]" onSubmit={authenticate}>
+                    <input
+                        type="text"
+                        placeholder="Username"
+                        className="w-full input"
+                        onChange={(event) => setUsername(event.target.value)}
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        className="w-full input"
+                        onChange={(event) => setPassword(event.target.value)}
+                    />
+                    <button className="btn" type="submit">
+                        Login
+                    </button>
                     <div className="mt-4 text-sm">
                         <p className="text-gray-400">
                             Do not have an account yet?
                         </p>
-                        <a className="text-blue-400" href="#">Create one now</a>
+                        <Link href={"/auth/register"} passHref={true}>
+                            <a className="text-blue-400">
+                                Create one now
+                            </a>
+                        </Link>
                     </div>
                 </form>
 
@@ -41,4 +78,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default LoginPage

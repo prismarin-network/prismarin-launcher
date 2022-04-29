@@ -1,0 +1,25 @@
+.container {
+    height: 50px;
+    margin: auto;
+}
+
+.character {
+    line-height: 50px;
+    font-size: 18px;
+    color: white;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    margin-left: 8px;
+}
+
+.character:first-child {
+    margin-left: 0;
+}
+
+.characterInactive {
+    background-color: rgba(14,22,40,0.5);
+}
+
+.characterSelected {
+    border: 1px solid #6B6D9A;
+}
