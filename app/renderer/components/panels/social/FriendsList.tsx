@@ -1,15 +1,19 @@
 import FriendsUser from "./FriendsUser";
 
-const FriendsList = () => {
+const FriendsList = ({user}: {user: User}) => {
     return (
         <div className="flex flex-col">
-            <FriendsUser username="ReaperMaga" activity={{activityStatus: "ONLINE", tagLine: "Playing: FrostBite"}} />
-            <FriendsUser username="HOPE" activity={{activityStatus: "ONLINE", tagLine: "Playing: FreeLife"}} />
-            <FriendsUser username="Savje" activity={{activityStatus: "ONLINE", tagLine: "Playing: Inverted Souls"}} />
-            <FriendsUser username="leVenour" activity={{activityStatus: "IDLE", tagLine: "Idle"}} />
-            <FriendsUser username="Nyx" activity={{activityStatus: "OFFLINE", tagLine: "Last seen 5d ago"}} />
-            <FriendsUser username="NotChriz" activity={{activityStatus: "OFFLINE", tagLine: "Last seen 8d ago"}} />
-            <FriendsUser username="RicoPing" activity={{activityStatus: "OFFLINE", tagLine: "Last seen 2y ago"}} />
+            {user.social.friends.map((friend, index) => (
+                <FriendsUser key={index} username={friend} activity={{activityStatus: "OFFLINE", tagLine: "Unknown Status"}} />
+            ))}
+            {user.social.friends.length === 0 && (
+                <div className="px-4 text-center text-gray-400 pt-[100px]">
+                    You do not have any friends yet.
+                    <button className="mt-2 btn btn-sm btn-primary btn-outline">
+                        Add your first friend
+                    </button>
+                </div>
+            )}
         </div>
     )
 }

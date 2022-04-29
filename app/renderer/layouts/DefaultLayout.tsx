@@ -43,15 +43,15 @@ const DefaultLayout = observer(({fullHeight = true, children}: DefaultLayoutProp
             </div>
             <div className="flex flex-col h-screen bg-midnight-600 w-[350px] pt-[48px]">
                 <div className="flex-grow">
-                    <h1 className="px-4 mb-3 text-gray-400">
-                        Friends (2/6)
+                    <h1 className="pb-2 mx-4 mb-3 text-gray-400 border-b-2 border-midnight-400">
+                        Friends ({authStore.user.social.friends.length})
                     </h1>
                     <div className="overflow-y-auto h-[80vh]">
-                        <FriendsList />
+                        <FriendsList user={authStore.user} />
                     </div>
                 </div>
                 <div className="w-full h-24 bg-midnight-400">
-                    <UserSelfProfile username={authStore.user.name} />
+                    <UserSelfProfile user={authStore.user} />
                 </div>
             </div>
             <div className="absolute top-0 left-0 w-full">

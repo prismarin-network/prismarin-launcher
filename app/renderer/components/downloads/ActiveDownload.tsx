@@ -6,7 +6,7 @@ const ActiveDownload = () => {
         <div className="flex items-center py-5 px-6 space-x-5 w-full rounded-lg bg-midnight-600">
             <div className="bg-cover rounded-lg h-[200px] w-[155px]" style={{backgroundImage: "url('/posters/inverted_souls.png')"}} />
             <div className="flex flex-col flex-grow space-y-3">
-                <h1 className="text-3xl font-bold text-gray-400">
+                <h1 className="text-3xl font-bold text-gray-300">
                     Inverted Souls
                 </h1>
                 <div className="flex items-center space-x-4">

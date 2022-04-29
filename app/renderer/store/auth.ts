@@ -1,13 +1,14 @@
 import {makeAutoObservable, runInAction} from "mobx";
 import {authenticateUserWithLoginDetails, authenticateUserWithToken} from "../core/auth";
 import Store from "electron-store";
+import {enrichInitialUserWithData} from "../core/user";
 
 const store = new Store({name: 'auth'});
 
 class Auth {
 
     token: string = undefined
-    user: InitialUser = undefined
+    user: User = undefined
 
     constructor() {
         makeAutoObservable(this)
@@ -20,10 +21,13 @@ class Auth {
         // Save newly generated token to local storage
         store.set('auth.token', loginDetails.token)
 
+        // Enrich initialUser with user data
+        const enrichedUser = enrichInitialUserWithData(loginDetails.user)
+
         // Update stored user object
         runInAction(() => {
             this.token = loginDetails.token
-            this.user = loginDetails.user
+            this.user = enrichedUser
         })
     }
 
@@ -35,10 +39,13 @@ class Auth {
         // Attempt to authenticate the user with the token
         const loginDetails = await authenticateUserWithToken(token)
 
+        // Enrich initialUser with user data
+        const enrichedUser = enrichInitialUserWithData(loginDetails.user)
+
         // Update stored user object
         runInAction(() => {
             this.token = loginDetails.token
-            this.user = loginDetails.user
+            this.user = enrichedUser
         })
     }
 
