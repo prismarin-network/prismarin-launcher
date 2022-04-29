@@ -1,41 +1,41 @@
-import { app, ipcMain } from 'electron';
+import {app, ipcMain} from 'electron';
 import serve from 'electron-serve';
-import createWindow from "./create-window";
+import createWindow from "./helpers/create-window";
 
 const isProd: boolean = process.env.NODE_ENV === 'production';
 
 if (isProd) {
-  serve({ directory: 'app' });
+    serve({directory: 'app'});
 } else {
-  app.setPath('userData', `${app.getPath('userData')} (development)`);
+    app.setPath('userData', `${app.getPath('userData')} (development)`);
 }
 
 (async () => {
-  await app.whenReady();
+    await app.whenReady();
 
-  const mainWindow = createWindow('main', {
-    width: 1000,
-    height: 600,
-  });
+    const mainWindow = createWindow('main', {
+        width: 1000,
+        height: 600,
+    });
 
-  if (isProd) {
-    await mainWindow.loadURL('app://./index.html');
-  } else {
-    const port = process.argv[2];
-    await mainWindow.loadURL(`http://localhost:${port}/`);
-  }
+    if (isProd) {
+        await mainWindow.loadURL('app://./index.html');
+    } else {
+        const port = process.argv[2];
+        await mainWindow.loadURL(`http://localhost:${port}/`);
+    }
 
-  // Minimize Window
-  ipcMain.on('minimize', () => {
-    mainWindow.minimize()
-  })
+    // Minimize Window
+    ipcMain.on('minimize', () => {
+        mainWindow.minimize()
+    })
 
-  // Close Window
-  ipcMain.on('close', () => {
-    mainWindow.close()
-  })
+    // Close Window
+    ipcMain.on('close', () => {
+        mainWindow.close()
+    })
 })();
 
 app.on('window-all-closed', () => {
-  app.quit();
+    app.quit();
 });

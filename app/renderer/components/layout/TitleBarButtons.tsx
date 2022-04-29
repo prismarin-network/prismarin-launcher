@@ -19,7 +19,7 @@ const TitleBarButtons = () => {
     }
 
     return (
-        <div className="flex justify-end items-center p-2 text-center">
+        <div className="flex justify-end items-center p-2 text-center titleBar">
             <div className="flex gap-2 items-center text-white">
                 <TitleBarButton onClick={minimize}>
                     <MdMinimize size="1.25rem" />

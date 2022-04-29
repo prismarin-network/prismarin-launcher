@@ -5,16 +5,17 @@ import {MdOutlineFileDownload, MdOutlinePersonOutline} from "react-icons/md"
 import Logo from "../components/common/Logo";
 import NavigationBarLink from "../components/layout/navigation/NavigationBarLink";
 import UserSelfProfile from "../components/panels/social/UserSelfProfile";
-import Link from "next/link"
+import {observer} from "mobx-react-lite";
+import authStore from "../store/auth";
 
 interface DefaultLayoutProps {
     fullHeight?: boolean
     children: React.ReactNode
 }
 
-const DefaultLayout = ({fullHeight = true, children}: DefaultLayoutProps) => {
+const DefaultLayout = observer(({fullHeight = true, children}: DefaultLayoutProps) => {
     return (
-        <div className="flex">
+        <div className="flex relative">
             <div className="relative flex-grow mt-2">
                 {fullHeight && (
                     <div className="absolute top-0 left-0 z-20 w-full bg-gradient-to-b to-transparent h-[200px] from-midnight-500"/>
@@ -39,8 +40,7 @@ const DefaultLayout = ({fullHeight = true, children}: DefaultLayoutProps) => {
                     {children}
                 </div>
             </div>
-            <div className="flex flex-col h-screen bg-midnight-600 w-[350px]">
-                <TitleBarButtons/>
+            <div className="flex flex-col h-screen bg-midnight-600 w-[350px] pt-[48px]">
                 <div className="flex-grow">
                     <h1 className="px-4 mb-3 text-gray-400">
                         Friends (2/6)
@@ -50,11 +50,14 @@ const DefaultLayout = ({fullHeight = true, children}: DefaultLayoutProps) => {
                     </div>
                 </div>
                 <div className="w-full h-24 bg-midnight-400/50">
-                    <UserSelfProfile username="tsuukii" />
+                    <UserSelfProfile username={authStore.user.name} />
                 </div>
+            </div>
+            <div className="absolute top-0 left-0 w-full">
+                <TitleBarButtons/>
             </div>
         </div>
     )
-}
+})
 
 export default DefaultLayout
