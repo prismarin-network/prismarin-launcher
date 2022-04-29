@@ -14,11 +14,11 @@ const getActivityColor = (activityStatus: ActivityStatus) => {
     }
 }
 
-const UserAvatar = ({activityStatus, size}: { activityStatus?: ActivityStatus, size?: string }) => {
+const UserAvatar = ({activityStatus, size, imageSRC}: { activityStatus?: ActivityStatus, size?: string, imageSRC?: string }) => {
     return (
         <div className="relative">
             <div className="flex overflow-hidden justify-center items-center">
-                <img src={DEFAULT_PROFILE_PICTURE.src} width={size} height={size}
+                <img src={imageSRC || DEFAULT_PROFILE_PICTURE.src} width={size} height={size}
                      alt="Profile Picture"
                      className="mask mask-squircle"
                 />
