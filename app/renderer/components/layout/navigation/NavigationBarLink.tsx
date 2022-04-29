@@ -8,7 +8,7 @@ interface NavigationBarLinkProps {
 
 const NavigationBarLink = ({title, link}: NavigationBarLinkProps) => {
     return (
-        <Link href={link} passHref={false}>
+        <Link href={link} passHref={true}>
             <div className="group flex items-center h-full cursor-pointer">
                 <h1 className="text-xl text-gray-400 group-hover:text-gray-200">
                     {title}
