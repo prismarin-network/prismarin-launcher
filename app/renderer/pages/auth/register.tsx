@@ -45,7 +45,7 @@ const Register = () => {
     }
 
     return (
-        <div>
+        <>
             <AuthLayout>
                 <div className="flex relative flex-col items-center h-full pt-[200px]">
                     <a className="flex items-center space-x-2">
@@ -104,7 +104,7 @@ const Register = () => {
                 verifyCode={verifyCode}
                 resendMail={() => createEmailVerificationCode(email).catch(error => console.error(error))}
             />
-        </div>
+        </>
     )
 }
 

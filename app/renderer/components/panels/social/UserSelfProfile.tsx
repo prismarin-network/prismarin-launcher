@@ -1,7 +1,7 @@
 import React from "react";
-import Link from "next/link"
 import UserAvatar from "../../common/UserAvatar";
 import {MdOutlineLogout} from "react-icons/md"
+import authStore from "../../../store/auth";
 
 interface UserSelfProfile {
     username: string
@@ -22,11 +22,9 @@ const UserSelfProfile = ({username}: UserSelfProfile) => {
                         </h4>
                     </div>
                 </div>
-                <Link href="/auth/login" passHref={true}>
-                    <button className="btn btn-square">
-                        <MdOutlineLogout size="1.5rem" />
-                    </button>
-                </Link>
+                <button className="btn btn-square" onClick={authStore.logout}>
+                    <MdOutlineLogout size="1.5rem" />
+                </button>
             </div>
         </div>
     )
