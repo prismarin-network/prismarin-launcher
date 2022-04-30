@@ -2,6 +2,10 @@ import * as electron from "electron";
 import React from "react";
 import {MdMinimize, MdClose, MdSettings} from "react-icons/md"
 import TitleBarButton from "./TitleBarButton";
+import { Reoverlay } from 'reoverlay';
+import CloseModal from "../modals/CloseModal";
+import SettingsModal from "../modals/SettingsModal";
+import authStore from "../../store/auth";
 
 const TitleBarButtons = () => {
     const ipcRenderer = electron.ipcRenderer || false;
@@ -12,10 +16,22 @@ const TitleBarButtons = () => {
         }
     }
 
+    const showSettings = () => {
+        Reoverlay.showModal(SettingsModal, {})
+    }
+
     const close = () => {
-        if (ipcRenderer) {
-            ipcRenderer.send('close')
-        }
+        Reoverlay.showModal(CloseModal, {
+            confirmText: "Are you sure you want to close the launcher?",
+            close: () => {
+                if (ipcRenderer) {
+                    ipcRenderer.send('close')
+                }
+            },
+            logout: () => {
+                authStore.logout()
+            }
+        })
     }
 
     return (
@@ -24,7 +40,7 @@ const TitleBarButtons = () => {
                 <TitleBarButton onClick={minimize}>
                     <MdMinimize size="1.25rem" />
                 </TitleBarButton>
-                <TitleBarButton>
+                <TitleBarButton onClick={showSettings}>
                     <MdSettings className="pt-[1.5px]" size="1.25rem" />
                 </TitleBarButton>
                 <TitleBarButton onClick={close}>

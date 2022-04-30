@@ -1,7 +1,5 @@
 import React from "react";
 import UserAvatar from "../../common/UserAvatar";
-import {MdOutlineLogout} from "react-icons/md"
-import authStore from "../../../store/auth";
 
 const UserSelfProfile = ({user}: {user: User}) => {
     return (
@@ -18,9 +16,6 @@ const UserSelfProfile = ({user}: {user: User}) => {
                         </h4>
                     </div>
                 </div>
-                <button className="btn btn-square" onClick={authStore.logout}>
-                    <MdOutlineLogout size="1.5rem" />
-                </button>
             </div>
         </div>
     )

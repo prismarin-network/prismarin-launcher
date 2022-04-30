@@ -5,6 +5,8 @@ import '../styles/globals.css';
 import '@splidejs/react-splide/css';
 
 import ToastWrapper from "../components/ToastWrapper";
+import ModalWrapper from "../components/modals/ModalWrapper";
+
 import authStore from "../store/auth";
 import Loader from "../components/Loader";
 
@@ -29,6 +31,7 @@ function MyApp({Component, pageProps}: AppProps) {
                 <Component {...pageProps} />
             </div>
             <ToastWrapper />
+            <ModalWrapper />
         </React.Fragment>
     )
 }

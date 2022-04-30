@@ -2,6 +2,7 @@
 @import 'fonts.css';
 @import 'themes/contextMenu.css';
 @import 'themes/toast.css';
+@import 'themes/modals.css';
 
 @tailwind base;
 @tailwind components;

@@ -49,7 +49,7 @@ class Auth {
         })
     }
 
-    async logout() {
+    logout() {
         // Clear token from local storage
         store.delete('auth.token')
 
