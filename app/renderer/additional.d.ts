@@ -36,3 +36,9 @@ interface Game {
         poster: string,
     }
 }
+
+interface GameProgress {
+    percent?: number;
+    transferredBytes?: number;
+    totalBytes?: number;
+}

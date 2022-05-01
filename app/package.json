@@ -38,6 +38,7 @@
     "daisyui": "^2.13.6",
     "electron": "^15.0.0",
     "electron-builder": "^22.11.7",
+    "electron-dl": "^3.3.1",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
     "eslint-plugin-storybook": "^0.5.7",

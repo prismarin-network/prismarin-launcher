@@ -2,27 +2,37 @@ import {observer} from "mobx-react-lite";
 import DefaultLayout from "../../layouts/DefaultLayout";
 import Container from "../../components/common/Container";
 import ActiveDownload from "../../components/downloads/ActiveDownload";
-import PastDownload from "../../components/downloads/PastDownload";
 import AuthWrapper from "../../components/AuthWrapper";
+import downloadStore from "../../store/download";
+import electron from "electron";
+import {useEffect} from "react";
 
 const IndexPage = observer(() => {
+    const ipcRenderer = electron.ipcRenderer || false;
+
+    const download = () => {
+        downloadStore.download("https://api.prismar.in/games/dungeon_outlast/download")
+    }
+
+    useEffect(() => {
+        if (ipcRenderer) {
+            ipcRenderer.on("downloadOnProgress", (event, progress: GameProgress) => {
+                downloadStore.updateProgress(progress)
+            });
+        }
+    }, [ipcRenderer])
 
     return (
         <AuthWrapper>
             <DefaultLayout fullHeight={false}>
                 <div className="pt-4">
                     <Container>
-                        <ActiveDownload />
-                        <h1 className="mt-8 text-2xl font-bold text-gray-200">
-                            Completed downloads:
-                        </h1>
-                        <div className="my-2 divider" />
-                        <div className="flex flex-col space-y-4">
-                            <PastDownload />
-                            <PastDownload />
-                        </div>
+                        <ActiveDownload progress={downloadStore.progress} status={downloadStore.status} />
                     </Container>
                 </div>
+                <button className="btn" onClick={download}>
+                    Test
+                </button>
             </DefaultLayout>
         </AuthWrapper>
     )

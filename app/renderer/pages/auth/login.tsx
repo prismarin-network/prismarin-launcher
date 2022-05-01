@@ -5,8 +5,9 @@ import {FormEvent, useState} from "react";
 import {toast} from "react-toastify";
 import authStore from "../../store/auth";
 import {useRouter} from "next/router";
+import {observer} from "mobx-react-lite";
 
-const LoginPage = () => {
+const LoginPage = observer(() => {
     const router = useRouter()
     const [username, setUsername] = useState(undefined)
     const [password, setPassword] = useState(undefined)
@@ -67,7 +68,6 @@ const LoginPage = () => {
                         </Link>
                     </div>
                 </form>
-
                 <div id="PrismarinVersion" className="absolute bottom-4 left-4">
                     <p className="text-gray-600">
                         Version 0.1.1
@@ -76,6 +76,6 @@ const LoginPage = () => {
             </div>
         </AuthLayout>
     )
-}
+})
 
 export default LoginPage

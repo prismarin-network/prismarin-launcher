@@ -5,7 +5,7 @@ import {enrichInitialUserWithData} from "../core/user";
 
 const store = new Store({name: 'auth'});
 
-class Auth {
+class AuthStore {
 
     token: string = undefined
     user: User = undefined
@@ -60,5 +60,5 @@ class Auth {
     }
 }
 
-const authStore = new Auth()
+const authStore = new AuthStore()
 export default authStore

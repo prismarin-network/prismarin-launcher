@@ -1,6 +1,8 @@
-import {app, ipcMain} from 'electron';
+import {app} from 'electron';
 import serve from 'electron-serve';
 import createWindow from "./helpers/create-window";
+import setupDownloadManager from "./ipc/download";
+import setupWindowManager from "./ipc/window";
 
 const isProd: boolean = process.env.NODE_ENV === 'production';
 
@@ -25,15 +27,8 @@ if (isProd) {
         await mainWindow.loadURL(`http://localhost:${port}/`);
     }
 
-    // Minimize Window
-    ipcMain.on('minimize', () => {
-        mainWindow.minimize()
-    })
-
-    // Close Window
-    ipcMain.on('close', () => {
-        mainWindow.close()
-    })
+    setupWindowManager(mainWindow)
+    setupDownloadManager(mainWindow)
 })();
 
 app.on('window-all-closed', () => {
