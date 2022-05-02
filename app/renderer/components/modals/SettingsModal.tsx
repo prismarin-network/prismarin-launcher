@@ -15,8 +15,18 @@ const SettingsModal = () => {
                     <li><a>Download</a></li>
                     <li><a>About</a></li>
                 </ul>
-                <div className="overflow-y-auto w-[500px] h-[480px]">
-                    <div className="flex flex-col space-y-2">
+                <div className="flex overflow-y-auto flex-col space-y-5 w-[550px] h-[480px]">
+                    <div className="flex justify-between items-center">
+                        <label>
+                            Window size:
+                        </label>
+                        <select className="w-full max-w-xs select select-bordered">
+                            <option disabled>1280 x 720</option>
+                            <option selected>1600 x 900</option>
+                            <option disabled>1920 x 1080</option>
+                        </select>
+                    </div>
+                    <div className="flex justify-between items-center">
                         <label>
                             Window size:
                         </label>
