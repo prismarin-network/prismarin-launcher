@@ -7,15 +7,13 @@ import '@splidejs/react-splide/css';
 import ToastWrapper from "../components/ToastWrapper";
 import authStore from "../store/auth";
 import Loader from "../components/Loader";
-import pageStore from "../store/page";
 
 function MyApp({Component, pageProps}: AppProps) {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         authStore.authenticateWithSavedToken()
-            .then(() => pageStore.setOfflineStatus(false))
-            .catch(() => pageStore.setOfflineStatus(true))
+            .catch((error) => console.error(error))
             .finally(() => {
                 setLoading(false)
             })
