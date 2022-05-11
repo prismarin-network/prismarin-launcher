@@ -3,6 +3,7 @@ import serve from 'electron-serve';
 import createWindow from "./helpers/create-window";
 import setupDownloadManager from "./ipc/download";
 import setupWindowManager from "./ipc/window";
+import setupCompressManager from "./ipc/compress";
 
 const isProd: boolean = process.env.NODE_ENV === 'production';
 
@@ -29,6 +30,10 @@ if (isProd) {
 
     setupWindowManager(mainWindow)
     setupDownloadManager(mainWindow)
+    setupCompressManager(mainWindow)
+
+    // Open dev tools on launch
+    mainWindow.webContents.openDevTools()
 })();
 
 app.on('window-all-closed', () => {

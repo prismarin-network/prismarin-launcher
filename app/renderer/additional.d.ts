@@ -30,14 +30,14 @@ interface Game {
     id: string,
     name: string,
     version: string,
-    media: {
-        logo: string,
-        background: string,
-        poster: string,
-    }
+    os: Record<string, string>,
+    tags: string[],
+    icon: string,
+    background: string,
+    poster: string
 }
 
-interface GameProgress {
+interface DownloadProgress {
     percent?: number;
     transferredBytes?: number;
     totalBytes?: number;

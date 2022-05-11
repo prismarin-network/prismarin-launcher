@@ -33,7 +33,9 @@ const DefaultLayout = observer(({fullHeight = true, children}: DefaultLayoutProp
                     <div id="RightNavigation" className="flex items-center space-x-4">
                         <MdOutlinePersonOutline size="1.68em" className="text-gray-500 hover:text-gray-200 cursor-pointer"/>
                         <Link href={"/downloads"} passHref={true}>
-                            <MdOutlineFileDownload size="1.75rem" className="text-gray-500 hover:text-gray-200 cursor-pointer"/>
+                            <a>
+                                <MdOutlineFileDownload size="1.75rem" className="text-gray-500 hover:text-gray-200 cursor-pointer"/>
+                            </a>
                         </Link>
                     </div>
                 </div>

@@ -4,21 +4,24 @@ import electronDl, {download} from "electron-dl";
 export default function setupDownloadManager(window: BrowserWindow) {
     let curDownloadItem: DownloadItem;
 
-    ipcMain.on("download", (event, info: {url: string, properties: electronDl.Options}) => {
+    ipcMain.on("download", (event, data: {url: string, properties?: electronDl.Options}) => {
         const onStarted = (item) => curDownloadItem = item
-        const onCompleted = () => curDownloadItem = undefined
+        const onCompleted = () => {
+            window.webContents.send("downloadOnCompleted", curDownloadItem.getSavePath())
+            curDownloadItem = undefined
+        }
         const onProgress = (status: electronDl.Progress) => {
             window.webContents.send("downloadOnProgress", status)
         }
 
         const properties: electronDl.Options = {
-            ...info.properties,
             overwrite: true,
             onProgress,
             onStarted,
             onCompleted,
+            ...data.properties,
         }
-        download(BrowserWindow.getFocusedWindow(), info.url, properties)
+        download(BrowserWindow.getFocusedWindow(), data.url, properties)
             .then(dl => window.webContents.send("downloadComplete", dl.getSavePath()));
     });
 

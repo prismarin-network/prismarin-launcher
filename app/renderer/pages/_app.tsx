@@ -7,6 +7,7 @@ import '@splidejs/react-splide/css';
 import ToastWrapper from "../components/ToastWrapper";
 import authStore from "../store/auth";
 import Loader from "../components/Loader";
+import DownloadListeners from "../listeners/DownloadListeners";
 
 function MyApp({Component, pageProps}: AppProps) {
     const [loading, setLoading] = useState(true)
@@ -29,6 +30,7 @@ function MyApp({Component, pageProps}: AppProps) {
                 <Component {...pageProps} />
             </div>
             <ToastWrapper />
+            <DownloadListeners />
         </React.Fragment>
     )
 }

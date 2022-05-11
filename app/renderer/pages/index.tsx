@@ -2,8 +2,20 @@ import {observer} from "mobx-react-lite";
 import DefaultLayout from "../layouts/DefaultLayout";
 import BackgroundImageWithGradientBottom from "../components/common/background/BackgroundImageWithGradientBottom";
 import AuthWrapper from "../components/AuthWrapper";
+import {generateFakeGame} from "../helpers/generateFakeGame";
+import downloadStore from "../store/download";
+import {useRouter} from "next/router";
 
 const IndexPage = observer(() => {
+    const router = useRouter()
+
+    const demoInstall = () => {
+        router.push('/downloads').then(() => {
+            const randomNumber = Math.random();
+            const game = generateFakeGame(randomNumber.toString())
+            downloadStore.addToQueue(game)
+        })
+    }
 
     return (
         <AuthWrapper>
@@ -28,7 +40,7 @@ const IndexPage = observer(() => {
                         </p>
                         <div className="flex items-center space-x-4">
                             <button className="btn">More information</button>
-                            <button className="btn btn-primary">Install Now!</button>
+                            <button className="btn btn-primary" onClick={demoInstall}>Install Now!</button>
                         </div>
                     </div>
                 </BackgroundImageWithGradientBottom>
